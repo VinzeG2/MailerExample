@@ -15,13 +15,11 @@ window.onload = () => {
         })
         const responseText = await response.text()
         if (response.status > 300) {
-            
             errorNode.innerHTML = responseText
-            return
         }
-
-        mailerForm.reset();
-        alert('Successful')
-
+        else {
+            mailerForm.reset();
+            alert('Successful')
+        }
     }
 }

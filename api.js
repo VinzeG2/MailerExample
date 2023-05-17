@@ -12,27 +12,27 @@ app.use(express.static('app'))
 
 app.get('/', (req, res) => {
     res.sendFile(`${path.resolve()}/index.html`)
-    
-    // const msg = {
-    //     to: 'vinze.gg@gmail.com', // Change to your recipient
-    //     from: process.env.FROM, // Change to your verified sender
-    //     subject: 'Sending with SendGrid is Fun',
-    //     text: 'and easy to do anywhere, even with Node.js',
-    //     html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-    // }
-    // sgMail
-    // .send(msg)
-    // .then(() => {
-    //     console.log('Email sent')
-    // })
-    // .catch((error) => {
-    //     console.error(error)
-    // })
 })
 
-app.post('/send', (req,res) => {
+app.post('/send', async (req,res) => {
     console.log(req.body);
-    res.status(401).send('Error')
+    const {to, subject, html} = req.body
+
+    const msg = {
+        to, // Change to your recipient
+        from: process.env.FROM, // Change to your verified sender
+        subject,
+        html,
+    }
+
+    try {
+        await sgMail.send(msg)
+        res.sendStatus(204)    
+    } catch (error) {
+        console.log("ERROR!! # $&^ ", error);
+        const messages = error.response.body.errors.map(e => e.message).join(' ')
+        res.status(400).send(messages)
+    }   
 })
 
 app.listen('3000', () => {
