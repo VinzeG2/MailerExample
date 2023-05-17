@@ -1,1 +1,31 @@
-hola
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mailer App</title>
+    <script src="main.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <h1>Mailer</h1>
+        <form id="mailer-form" action="">
+            <div>
+                <label for="">TO: </label>
+                <input type="text" name="to">
+            </div>
+            <div>
+                <label for="">Subject: </label>
+                <input type="text" name="subject">
+            </div>
+            <div>
+                <label for="">Message</label>
+                <textarea name="html" id="" cols="30" rows="10"></textarea>
+            </div>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <div id="error"></div>
+</body>
+</html>
