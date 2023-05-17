@@ -6,24 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mailer App</title>
     <script src="main.js"></script>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
     <div class="main-container">
         <h1>Mailer</h1>
         <form id="mailer-form" action="">
-            <div>
+            <div class="labeled-container">
                 <label for="">TO: </label>
                 <input type="text" name="to">
             </div>
-            <div>
+            <div class="labeled-container">
                 <label for="">Subject: </label>
                 <input type="text" name="subject">
             </div>
             <div>
-                <label for="">Message</label>
+                <label class="message-label" for="">Message</label>
                 <textarea name="html" id="" cols="30" rows="10"></textarea>
             </div>
-            <button type="submit">Send</button>
+            <button class="send-button" type="submit">Send</button>
         </form>
     </div>
     <div id="error"></div>
